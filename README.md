@@ -1,4 +1,4 @@
-# ARModel
+# MAModel
 ## Overview
 This is a simple MA Model written in python
 ## Dependency
