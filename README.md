@@ -1,2 +1,7 @@
-# MAModel
-A simple MAModel written in python
+# ARModel
+## Overview
+This is a simple MA Model written in python
+## Dependency
+numpy / matplotlib
+## Contact
+[My Blog](https://edlinus.cn)
