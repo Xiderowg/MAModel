@@ -168,13 +168,13 @@ n=len(x) #数据数目
 xm=np.mean(x) #平均值
 y=x-xm #中心化系列
 
-dx=np.std(x)#系列标准差
+dx=np.std(y)#系列标准差
 cor=ccorr(x,int(len(x)/2))#相关系数数组
 dk=pow(1+2*sum(np.power(cor,2)),0.5)/np.sqrt(60)#误差项
 q=checkq(dk,cor)#滑动阶数
 xt=np.zeros(q)#初试xita数组
 [xita,ds]=iteration(xt,pow(dx,2),y)
-ran=cran(y,xita)
+ran=cran(y,xita)#随机变量数组
 b=ran[len(ran)-1] #回归方程截距
 str1=""
 for c in range(0,len(xita)):
@@ -191,7 +191,7 @@ csr=ccs(ran)
 dr=np.std(ran)
 #fp = input("请输入预报长度:\n") #预报长度
 fp=10
-xin=x[len(x)-q:]
+xin=ran[len(ran)-q:]
 plist=np.loadtxt(filepath+"\\φ.dat")
 yf=np.zeros(fp)
 for i in range(0,fp):
@@ -203,7 +203,7 @@ for i in range(0,fp):
         yf[i]+=xin[j]*xita[len(xita)-j-1]
     for k in range(0,len(xita)-1):
         xin[k]=xin[k+1]
-    xin[len(xita)-1]=yf[i]
+    xin[len(xita)-1]=p3n
 np.savetxt(filepath+"\\y.dat",yf,fmt='%s')
 print("预报结果已保存在"+filepath+"\\y.dat")
 plt.figure(figsize=(8,4))
